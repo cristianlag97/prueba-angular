@@ -1,0 +1,37 @@
+<div class="login-container">
+  <mat-card class="login-card">
+    <mat-card-title class="title">{{ 'login.login-title' | translate }}</mat-card-title>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>{{ 'login.email' | translate }}</mat-label>
+        <input matInput type="email" formControlName="email" required />
+        <mat-icon matPrefix>mail</mat-icon>
+        <mat-error *ngIf="loginForm.controls['email'].hasError('required')">
+          {{ 'login.errors.email' | translate }}
+        </mat-error>
+        <mat-error *ngIf="loginForm.controls['email'].hasError('email')">
+          {{ 'login.errors.format-email' | translate }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>{{ 'login.password' | translate }}</mat-label>
+        <input matInput [type]="hidePassword() ? 'password' : 'text'" formControlName="password" required />
+        <button mat-icon-button matSuffix (click)="togglePasswordVisibility($event)">
+          <mat-icon>{{ hidePassword() ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+          {{ 'login.errors.password' | translate }}
+        </mat-error>
+        <mat-error *ngIf="loginForm.controls['password'].hasError('minlength')">
+         {{ 'login.errors.format-password' | translate}}
+        </mat-error>
+      </mat-form-field>
+
+      <button  [disabled]="(loading$ | async)"  mat-raised-button color="primary" class="submit-button" type="submit" [disabled]="loading$ | async">
+        {{ 'login.login-title' | translate }}
+      </button>
+    </form>
+  </mat-card>
+</div>

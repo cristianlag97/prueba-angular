@@ -1,0 +1,27 @@
+{
+  "login": {
+    "login-title": "log in",
+    "email": "Email",
+    "password": "Password",
+    "errors": {
+      "email": "Email is required",
+      "password": "Password is required",
+      "format-email": "Invalid format",
+      "format-password": "Must be at least 6 characters"
+    }
+  },
+  "home": {
+    "header": {
+      "logout": "Logout",
+      "language": "🇬🇧 English",
+      "btn-home": "Home"
+    },
+    "search": "Search for Pokémon..."
+  },
+  "detail": {
+    "type": "Type(s):",
+    "id": "ID:",
+    "height": "Height:",
+    "weight": "Weight:"
+  }
+}

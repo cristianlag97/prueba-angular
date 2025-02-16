@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { loadSession } from './features/auth/presentation/store/auth.action';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +10,8 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'prueba-tec';
+
+  constructor(private store: Store) {
+    this.store.dispatch(loadSession());
+  }
 }

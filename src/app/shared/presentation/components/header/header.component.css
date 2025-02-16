@@ -1,0 +1,47 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Separa los elementos */
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+}
+
+.navbar-list {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar-item {
+  margin-right: 20px;
+}
+
+.navbar-link {
+  color: white;
+  text-decoration: none;
+}
+
+.navbar-buttons {
+  display: flex;
+  align-items: center;
+  margin-left: auto; /* Empuja los botones a la derecha */
+}
+
+.btn {
+  background: none;
+  border: 1px solid white;
+  color: white;
+  padding: 8px 15px;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: white;
+  color: #333;
+}

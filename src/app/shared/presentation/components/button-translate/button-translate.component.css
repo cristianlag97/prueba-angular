@@ -1,0 +1,16 @@
+.btn-lang {
+  background: none;
+  border: 1px solid white;
+  color: white;
+  padding: 8px 15px;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+
+.btn-lang:hover {
+  background: #333;
+  color: white;
+}

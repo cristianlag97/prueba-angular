@@ -1,0 +1,15 @@
+<!-- <div class="pokemon-details-container"> -->
+  <mat-card class="pokemon-details-container">
+
+    <div class="pokemon-header">
+      <img [src]="imageUrl" alt="Pokemon Image" class="pokemon-image" />
+      <h1 class="pokemon-name">{{ pokemonDetails?.name }}</h1>
+    </div>
+    <div class="pokemon-info">
+      <p><strong>{{ 'detail.type' | translate }}</strong> {{ pokemonTypes }}</p>
+      <p><strong>{{ 'detail.id' | translate }}</strong> {{ pokemonDetails?.id }}</p>
+      <p><strong>{{ 'detail.height' | translate }}</strong> {{ pokemonDetails?.height }}m</p>
+      <p><strong>{{ 'detail.weight' | translate }}</strong> {{ pokemonDetails?.weight }}kg</p>
+    </div>
+  </mat-card>
+<!-- </div> -->

@@ -1,0 +1,32 @@
+<div class="search-container">
+  <input
+    type="text"
+    [attr.placeholder]="'home.search' | translate"
+    [formControl]="searchControl"
+    class="search-input"
+  />
+</div>
+
+<div class="spacer"></div>
+<div class="pokemon-container" (window:scroll)="onScroll()">
+  @if(isLoading$ | async){
+    <app-loading></app-loading>
+  }
+
+  @if(isSearching$ | async){
+    @for (pokemon of pokemonService.filteredPokemons$ | async; track $index) {
+      <app-pokemon-card
+        (click)="onCardClick(pokemon.id)"
+        [name]="pokemon.name"
+        [imageUrl]="imageUrl + pokemon.id + '.png'">
+      </app-pokemon-card>
+    }
+  } @else {
+    @for (pokemon of pokemons$ | async; track $index) {
+      <app-pokemon-card (click)="onCardClick(pokemon.id)" [name]="pokemon.name"
+        [imageUrl]="imageUrl.toString()+pokemon.id+'.png'">
+      </app-pokemon-card>
+    }
+  }
+
+</div>

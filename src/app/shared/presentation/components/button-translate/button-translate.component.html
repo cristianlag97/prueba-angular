@@ -1,0 +1,12 @@
+<button
+  [ngStyle]="{
+    'border-color': borderColor(),
+    'color': isHovered ? hoverTextColor() : textColor(),
+    'background': isHovered ? hoverBgColor() : 'transparent'
+    }"
+  class="btn-lang"
+  (click)="toggleLanguage()"
+  (mouseenter)="isHovered = true"
+  (mouseleave)="isHovered = false">
+  {{ 'home.header.language' | translate }}
+</button>

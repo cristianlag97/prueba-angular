@@ -1,0 +1,9 @@
+<nav class="navbar">
+  <ul class="navbar-list">
+    <li class="navbar-item"><a routerLink="/" routerLinkActive="activate" class="navbar-link">{{ 'home.header.btn-home' | translate }}</a></li>
+  </ul>
+  <div class="navbar-buttons">
+    <button class="btn" (click)="logout()">{{ 'home.header.logout' | translate }}</button>
+    <app-button-translate borderColor='white' textColor='white' hoverBgColor="white" hoverTextColor="black"></app-button-translate>
+  </div>
+</nav>

@@ -1,0 +1,27 @@
+{
+  "login": {
+    "login-title": "Iniciar sesión",
+    "email": "Correo",
+    "password": "Contraseña",
+    "errors": {
+      "email": "El email es obligatorio",
+      "password": "La contraseña es obligatoria",
+      "format-email": "Formato inválido",
+      "format-password": "Debe tener al menos 6 caracteres"
+    }
+  },
+  "home": {
+    "header": {
+      "logout": "Cerrar sesión",
+      "language": "🇪🇸 Español",
+      "btn-home": "Inicio"
+    },
+    "search": "Buscar Pokémon..."
+  },
+  "detail": {
+    "type": "Tipo(s):",
+    "id": "ID:",
+    "height": "Altura:",
+    "weight": "Peso:"
+  }
+}
