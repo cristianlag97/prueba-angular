@@ -9,6 +9,7 @@ export class AuthService {
 
   constructor() { }
 
+  // Autenticación
   login(email: String, password: String): Observable<{ token: string }> {
     if(email === this.mockUser.email && password === this.mockUser.password){
       return of({token: 'moke-token'}).pipe(delay(1000));

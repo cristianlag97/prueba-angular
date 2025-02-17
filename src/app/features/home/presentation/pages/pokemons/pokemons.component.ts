@@ -2,7 +2,6 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Constants } from '../../../../../core/constants/Constants';
 import { PokemonService } from '../../../infrastructure/services/pokemon.service';
 import { Router } from '@angular/router';
-import Result from '../../../infrastructure/models/Result';
 import { BehaviorSubject, debounceTime, distinctUntilChanged, forkJoin, Observable } from 'rxjs';
 import { Pokemon } from '../../../infrastructure/models/Pokemon';
 import { PokemonCardComponent } from '../../components/pokemon-card/pokemon-card.component';
@@ -27,34 +26,24 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class PokemonsComponent implements OnInit {
   pokemonService = inject(PokemonService);
+
   pokemons$: Observable<Pokemon[]> = this.pokemonService.pokemons$;
   isLoading$ = this.pokemonService.isLoading$;
+
   imageUrl: string = Constants.IMAGE_URL;
+
   searchControl = new FormControl('');
   isSearching$ = new BehaviorSubject<boolean>(false);
 
   constructor(private router: Router) {
-    this.searchControl.valueChanges
-    .pipe(
-      debounceTime(300),
-      distinctUntilChanged()
-    )
-    .subscribe((term) => {
-      const trimmedTerm = term?.trim() || '';
-      this.isSearching$.next(!!trimmedTerm); // 🔹 Actualiza el estado
-
-      if (trimmedTerm) {
-        this.pokemonService.setSearchTerm(trimmedTerm);
-      } else {
-        this.pokemonService.clearSearchTerm();
-      }
-    });
+    this.onSearch();
   }
 
   ngOnInit(): void {
     this.pokemonService.loadMorePokemons();
   }
 
+  // Detecta el scroll y carga más Pokémon
   onScroll() {
     const threshold = 50;
     const scrollPosition = window.innerHeight + window.scrollY;
@@ -65,24 +54,24 @@ export class PokemonsComponent implements OnInit {
     }
   }
 
+  // Redirige a la vista de detalles de un Pokémon
   onCardClick(pokemonId: number) {
     this.router.navigate(['/pokemons/', pokemonId]);
   }
 
-  // onSearch() {
-  //    const input = event.target as HTMLInputElement;
-  //   this.searchControl.setValue(input.value);
-  //   this.searchControl.valueChanges
-  //     .pipe(
-  //       debounceTime(300),
-  //       distinctUntilChanged()
-  //     )
-  //     .subscribe((term) => {
-  //       if (term?.trim()) {
-  //         this.pokemonService.setSearchTerm(term);
-  //       } else {
-  //         this.pokemonService.clearSearchTerm();
-  //       }
-  //     });
-  // }
+  // Escucha los cambios en el campo de búsqueda
+  onSearch() {
+    this.searchControl.valueChanges
+      .pipe(debounceTime(300), distinctUntilChanged())
+      .subscribe((term) => {
+        const trimmedTerm = term?.trim() || '';
+        this.isSearching$.next(!!trimmedTerm);
+
+        if (trimmedTerm) {
+          this.pokemonService.setSearchTerm(trimmedTerm);
+        } else {
+          this.pokemonService.clearSearchTerm();
+        }
+      });
+  }
 }

@@ -1,7 +1,7 @@
 .navbar {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Separa los elementos */
+  justify-content: space-between;
   padding: 10px 20px;
   background-color: #333;
   color: white;
@@ -26,7 +26,7 @@
 .navbar-buttons {
   display: flex;
   align-items: center;
-  margin-left: auto; /* Empuja los botones a la derecha */
+  margin-left: auto;
 }
 
 .btn {

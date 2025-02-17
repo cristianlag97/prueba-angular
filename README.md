@@ -70,5 +70,3 @@
   ]
   ```
 
-Si tienes dudas o sugerencias, abre un issue en el repositorio. 🚀
-

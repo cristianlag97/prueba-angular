@@ -34,12 +34,12 @@ import { TranslateModule } from '@ngx-translate/core';
     MatButtonModule,
     MatIconModule,
     CommonModule,
-    TranslateModule
+    TranslateModule,
   ],
   templateUrl: './form-login.component.html',
   styleUrl: './form-login.component.css',
 })
-export class FormLoginComponent implements OnInit {
+export class FormLoginComponent {
   loginForm: FormGroup;
   email: FormControl;
   password: FormControl;
@@ -71,26 +71,10 @@ export class FormLoginComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    // Escuchar el token y redirigir si existe
-    this.store.select(selectToken).subscribe((token) => {
-      if (token) {
-        this.router.navigate(['/']);
-      }
-    });
-
-    // Escuchar errores y mostrarlos en un snackba
-    this.store.select(selectAuthError).subscribe((error) => {
-      if (error && this.attemptedLogin) {
-        this.snackBar.open(error.toString(), 'Cerrar', { duration: 3000 });
-        this.attemptedLogin = false;
-      }
-    });
-  }
-
   togglePasswordVisibility(event: MouseEvent) {
+    event.preventDefault();
+  event.stopPropagation();
     this.hidePassword.set(!this.hidePassword());
-    event.stopPropagation();
   }
 
   onSubmit() {
@@ -98,6 +82,26 @@ export class FormLoginComponent implements OnInit {
       this.attemptedLogin = true;
       const { email, password } = this.loginForm.value;
       this.store.dispatch(login({ user: { email, password } }));
+
+      this.handleAuthSuccess();
+      this.handleAuthErrors();
     }
+  }
+
+  private handleAuthSuccess() {
+    this.store.select(selectToken).subscribe((token) => {
+      if (token) {
+        this.router.navigate(['/']);
+      }
+    });
+  }
+
+  private handleAuthErrors() {
+    this.store.select(selectAuthError).subscribe((error) => {
+      if (error) {
+        this.snackBar.open(error.toString(), 'Cerrar', { duration: 3000 });
+        this.attemptedLogin = false;
+      }
+    });
   }
 }

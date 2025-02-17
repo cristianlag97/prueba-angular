@@ -13,6 +13,7 @@ const initialState : AuthState = {
 export const authReducer = createReducer(
   initialState,
 
+  // Si el token existe se almacena en el estado global
   on(loadSession, (state) => {
     const token = localStorage.getItem('authToken');
     return token

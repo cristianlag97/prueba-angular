@@ -2,14 +2,14 @@
   <mat-card class="not-found-card">
     <mat-card-content>
       <h1 class="error-code">404</h1>
-      <h2 class="error-message">Página No Encontrada</h2>
+      <h2 class="error-message">{{ '404.title' | translate }}</h2>
       <p class="error-description">
-        Lo sentimos, la página que buscas no existe o ha sido movida.
+        {{ '404.message' | translate }}
       </p>
     </mat-card-content>
     <mat-card-actions>
       <button mat-raised-button color="primary" class="home-button" (click)="goHome()">
-        Volver al inicio
+        {{ '404.btn-error' | translate }}
       </button>
     </mat-card-actions>
   </mat-card>

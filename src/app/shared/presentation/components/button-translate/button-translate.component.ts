@@ -24,6 +24,7 @@ export class ButtonTranslateComponent implements OnInit{
     this.translate.use(this.currentLanguage);
   }
 
+  // Cambiar lenguaje de la aplicación web
   toggleLanguage() {
     this.currentLanguage = this.currentLanguage === 'es' ? 'en' : 'es';
     this.translate.use(this.currentLanguage);

@@ -23,5 +23,10 @@
     "id": "ID:",
     "height": "Altura:",
     "weight": "Peso:"
+  },
+  "404": {
+    "title": "Página No Encontrada",
+    "message": "Lo sentimos, la página que buscas no existe o ha sido movida.",
+    "btn-error": "Volver al inicio"
   }
 }

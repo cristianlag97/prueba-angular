@@ -10,6 +10,4 @@ import { ButtonTranslateComponent } from "../../../../../shared/presentation/com
 })
 export class SigninPageComponent {
 
-  register(){}
-
 }
