@@ -45,7 +45,6 @@ export class FormLoginComponent {
   password: FormControl;
   loading$: Observable<boolean> = new Observable();
   hidePassword = signal(true);
-  private attemptedLogin = false;
 
   constructor(
     private store: Store,
@@ -63,12 +62,6 @@ export class FormLoginComponent {
     });
 
     this.loading$ = this.store.select(selectAuthLoading);
-
-    this.store.select(selectAuthError).subscribe((error) => {
-      if (error) {
-        this.snackBar.open(error.toString(), 'Cerrar', { duration: 3000 });
-      }
-    });
   }
 
   togglePasswordVisibility(event: MouseEvent) {
@@ -79,7 +72,6 @@ export class FormLoginComponent {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      this.attemptedLogin = true;
       const { email, password } = this.loginForm.value;
       this.store.dispatch(login({ user: { email, password } }));
 
@@ -100,7 +92,6 @@ export class FormLoginComponent {
     this.store.select(selectAuthError).subscribe((error) => {
       if (error) {
         this.snackBar.open(error.toString(), 'Cerrar', { duration: 3000 });
-        this.attemptedLogin = false;
       }
     });
   }

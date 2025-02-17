@@ -19,12 +19,12 @@ export const login = createAction(
 )
 
 export const loginSuccess = createAction(
-  '[Auth] Login Success',
+  ActionType.LOGIN_SUCCESS,
   props<{ user: User; token: string }>()
 );
 
 export const loginFailure = createAction(
-  '[Auth] Login Failure',
+  ActionType.LOGIN_FAILURE,
   props<{ error: string }>()
 );
 
