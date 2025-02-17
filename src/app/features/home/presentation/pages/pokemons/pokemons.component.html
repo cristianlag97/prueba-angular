@@ -9,7 +9,7 @@
 
 <div class="spacer"></div>
 <div class="pokemon-container" (window:scroll)="onScroll()">
-  @if(isLoading$ | async){
+  @if(pokemonService.isLoading$| async){
     <app-loading></app-loading>
   }
 
@@ -22,7 +22,7 @@
       </app-pokemon-card>
     }
   } @else {
-    @for (pokemon of pokemons$ | async; track $index) {
+    @for (pokemon of pokemonService.pokemons$| async; track $index) {
       <app-pokemon-card (click)="onCardClick(pokemon.id)" [name]="pokemon.name"
         [imageUrl]="imageUrl.toString()+pokemon.id+'.png'">
       </app-pokemon-card>

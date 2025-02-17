@@ -27,9 +27,6 @@ import { TranslateModule } from '@ngx-translate/core';
 export class PokemonsComponent implements OnInit {
   pokemonService = inject(PokemonService);
 
-  pokemons$: Observable<Pokemon[]> = this.pokemonService.pokemons$;
-  isLoading$ = this.pokemonService.isLoading$;
-
   imageUrl: string = Constants.IMAGE_URL;
 
   searchControl = new FormControl('');
